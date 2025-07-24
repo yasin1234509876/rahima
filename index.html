@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>????? ???????</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #444;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h2>????? ???????</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Amount Of Chada</th>
+    </tr>
+  </thead>
+  <tbody id="data-body">
+    <!-- Data will load here -->
+  </tbody>
+</table>
+
+<script>
+  fetch("https://opensheet.elk.sh/1DPajjZehWNa9ZrEn0GlBL-6hwY3bdyvTtCIkKn9OBX4/Sheet1")
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.getElementById("data-body");
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row["ID"]}</td>
+          <td>${row["Name"]}</td>
+          <td>${row["Date"]}</td>
+          <td>${row["Amount Of Chada "]}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    });
+</script>
+
+</body>
+</html>
